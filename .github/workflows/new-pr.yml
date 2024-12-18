@@ -13,6 +13,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Use Secrets
+      run: |
+          echo "User: $USER"
+          echo "Password: $USER_CRED"
+      env:
+          USER: ${{ secrets.USER }}           # Access the USER secret
+          USER_CRED: ${{ secrets.USER_CRED }} # Access the USER_CRED secret
         
     - name: healthcheck
       continue-on-error: true
